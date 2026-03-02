@@ -3,65 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to SpotGauge</title>
-    <meta http-equiv="refresh" content="3;url=https://chowdhurygroup.github.io/SpotGauge">
+    <title>Chowdhury Group — Research Software</title>
+    <meta name="description" content="Open-source tools for laser science and ultrafast optics from the Chowdhury Group.">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         :root {
-            --primary: #2563eb;
-            --bg: #f8fafc;
-            --text: #1e293b;
+            --blue:      #1d4ed8;
+            --blue-dark: #1e3a8a;
+            --blue-light:#dbeafe;
+            --teal:      #0d9488;
+            --bg:        #f8fafc;
+            --surface:   #ffffff;
+            --text:      #0f172a;
+            --muted:     #64748b;
+            --border:    #e2e8f0;
+            --radius:    0.75rem;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            background: var(--bg);
             color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ── NAV ──────────────────────────────────────────────── */
+        nav {
             display: flex;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--blue-dark);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .nav-brand span { color: var(--teal); }
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .nav-link:hover { color: var(--text); border-color: #94a3b8; }
+        .nav-link svg { width: 16px; height: 16px; }
+
+        /* ── HERO / FEATURED PROJECT ──────────────────────────── */
+        .hero {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, #1e40af 60%, var(--teal) 100%);
+            color: #fff;
+            padding: 5rem 2rem 4rem;
             text-align: center;
         }
-        .container {
-            padding: 2rem;
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            max-width: 400px;
+        .hero-inner { max-width: 720px; margin: 0 auto; }
+        .featured-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 2rem;
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
         }
-        h1 { font-size: 1.5rem; margin-bottom: 1rem; }
-        p { color: #64748b; margin-bottom: 2rem; }
-        .loader {
-            border: 3px solid #e2e8f0;
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1.5rem;
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .hero-tagline {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 560px;
+            margin: 0 auto 2rem;
+        }
+        .hero-image {
+            max-width: 100%;
+            border-radius: var(--radius);
+            margin: 0 auto 2rem;
+            display: block;
+            box-shadow: 0 20px 48px rgba(0,0,0,0.35);
+        }
+        .hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 2.5rem;
+        }
+        .chip {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 2rem;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.85rem;
+        }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
         .btn {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary);
-            color: white;
+            padding: 0.8rem 1.75rem;
+            border-radius: 0.6rem;
+            font-weight: 600;
+            font-size: 0.95rem;
             text-decoration: none;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s, transform 0.15s;
         }
-        .btn:hover { opacity: 0.9; }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-primary { background: #fff; color: var(--blue-dark); }
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        /* ── SECTION CONTAINER ────────────────────────────────── */
+        .section { padding: 4rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-header { margin-bottom: 2rem; }
+        .section-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+        .section-header p { color: var(--muted); margin-top: 0.4rem; font-size: 0.95rem; }
+
+        /* ── PROJECT GRID ─────────────────────────────────────── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s, transform 0.15s, border-color 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            border-color: #93c5fd;
+        }
+        .card-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            background: var(--blue-light);
+        }
+        .card-body {
+            padding: 1.25rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex: 1;
+        }
+        .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+        .card-name { font-weight: 700; font-size: 1rem; color: var(--blue); }
+        .lang-badge {
+            flex-shrink: 0;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.2rem 0.55rem;
+            border-radius: 2rem;
+            background: var(--blue-light);
+            color: var(--blue-dark);
+        }
+        .lang-python      { background: #fef3c7; color: #92400e; }
+        .lang-matlab      { background: #ede9fe; color: #5b21b6; }
+        .lang-mathematica { background: #fce7f3; color: #831843; }
+        .lang-html        { background: #fee2e2; color: #991b1b; }
+        .card-desc {
+            font-size: 0.875rem;
+            color: var(--muted);
+            flex: 1;
+            line-height: 1.5;
+        }
+        .card-footer { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.25rem; }
+        .card-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+        .card-stat svg { width: 13px; height: 13px; opacity: 0.6; }
+
+        /* ── LOADING / ERROR ──────────────────────────────────── */
+        .status-msg {
+            text-align: center;
+            color: var(--muted);
+            padding: 3rem 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* ── FOOTER ───────────────────────────────────────────── */
+        footer {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.875rem;
+        }
+        footer a { color: var(--blue); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ── RESPONSIVE ───────────────────────────────────────── */
+        @media (max-width: 600px) {
+            nav { padding: 0.75rem 1rem; }
+            .hero { padding: 3.5rem 1.25rem 3rem; }
+            .section { padding: 3rem 1.25rem; }
+        }
     </style>
 </head>
 <body>
 
+<!-- ── NAV ──────────────────────────────────────────────────── -->
+<nav>
+    <a href="/" class="nav-brand">Chowdhury<span>Group</span></a>
+    <a href="https://github.com/ChowdhuryGroup" class="nav-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38
+                     0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+                     -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87
+                     2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+                     0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21
+                     2.2.82a7.65 7.65 0 012-.27 7.65 7.65 0 012 .27c1.53-1.04
+                     2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82
+                     2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0
+                     1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        GitHub
+    </a>
+</nav>
+
+<!-- ── HERO (rendered by JS) ────────────────────────────────── -->
+<div id="hero-mount"></div>
+
+<!-- ── OTHER PROJECTS (rendered by JS) ──────────────────────── -->
+<section class="section">
     <div class="container">
-        <div class="loader"></div>
-        <h1>Moving to SpotGauge</h1>
-        <p>We are redirecting you to the Chowdhury Group project page.</p>
-        <a href="https://chowdhurygroup.github.io/SpotGauge" class="btn">Click here if not redirected</a>
+        <div class="section-header">
+            <h2>More Projects</h2>
+            <p>Open-source tools for laser science, ultrafast optics, and lab automation.</p>
+        </div>
+        <div id="projects-grid" class="projects-grid">
+            <p class="status-msg">Loading projects…</p>
+        </div>
     </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────── -->
+<footer>
+    <p>
+        Built by the <a href="https://github.com/ChowdhuryGroup" target="_blank" rel="noopener">Chowdhury Group</a>.
+        All projects are open source on
+        <a href="https://github.com/ChowdhuryGroup" target="_blank" rel="noopener">GitHub</a>.
+    </p>
+</footer>
+
+<script>
+    // ── Star icon SVG ────────────────────────────────────────
+    const STAR_SVG = `<svg viewBox="0 0 16 16" fill="currentColor">
+        <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416
+                 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8
+                 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818
+                 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+    </svg>`;
+
+    // ── Language → CSS class ─────────────────────────────────
+    function langClass(lang) {
+        if (!lang) return '';
+        return 'lang-' + lang.toLowerCase().replace(/\s+/g, '-');
+    }
+
+    // ── Build the hero section HTML ──────────────────────────
+    function buildHero(f) {
+        const imgHtml = f.image
+            ? `<img src="${f.image}" alt="${f.name} screenshot" class="hero-image">`
+            : '';
+        const chipsHtml = (f.chips || [])
+            .map(c => `<span class="chip">${c}</span>`)
+            .join('');
+        return `
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="featured-badge">⭐ Featured Project</div>
+                <h1>${f.name}</h1>
+                <p class="hero-tagline">${f.tagline}</p>
+                ${imgHtml}
+                <div class="hero-chips">${chipsHtml}</div>
+                <div class="hero-actions">
+                    <a href="${f.demo_url}" class="btn btn-primary" aria-label="Launch ${f.name}">Launch ${f.name} &rarr;</a>
+                    <a href="${f.github_url}" class="btn btn-secondary" target="_blank" rel="noopener">
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>`;
+    }
+
+    // ── Build a single project card HTML ─────────────────────
+    function buildCard(p) {
+        const imgHtml = p.image
+            ? `<img src="${p.image}" alt="${p.name} screenshot" class="card-img" loading="lazy">`
+            : '';
+        const langHtml = p.language
+            ? `<span class="lang-badge ${langClass(p.language)}">${p.language}</span>`
+            : '';
+        const starsHtml = p.stars > 0
+            ? `<span class="card-stat">${STAR_SVG}${p.stars}</span>`
+            : '';
+        return `
+        <a href="${p.url}" class="card" target="_blank" rel="noopener">
+            ${imgHtml}
+            <div class="card-body">
+                <div class="card-header">
+                    <span class="card-name">${p.name}</span>
+                    ${langHtml}
+                </div>
+                <p class="card-desc">${p.description || ''}</p>
+                <div class="card-footer">${starsHtml}</div>
+            </div>
+        </a>`;
+    }
+
+    // ── Fetch projects.json and render ───────────────────────
+    fetch('projects.json')
+        .then(r => {
+            if (!r.ok) throw new Error(`Could not load projects.json (HTTP ${r.status})`);
+            return r.json();
+        })
+        .then(data => {
+            document.getElementById('hero-mount').innerHTML = buildHero(data.featured);
+            document.getElementById('projects-grid').innerHTML =
+                (data.projects || []).map(buildCard).join('');
+        })
+        .catch(err => {
+            document.getElementById('projects-grid').innerHTML =
+                `<p class="status-msg">Could not load projects: ${err.message}</p>`;
+        });
+</script>
 
 </body>
 </html>

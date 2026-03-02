@@ -1,0 +1,114 @@
+{
+  "featured": {
+    "name": "SpotGauge",
+    "tagline": "Analyze laser focal spots and calculate beam parameters directly in your browser - no installation required, no data leaves your machine.",
+    "chips": [
+      "🔬 FWHM Analysis",
+      "⚡ Laser Calculations",
+      "📷 Image Upload",
+      "🌐 Browser-Based",
+      "🔒 Fully Local"
+    ],
+    "demo_url": "https://chowdhurygroup.github.io/SpotGauge/",
+    "github_url": "https://github.com/ChowdhuryGroup/SpotGauge",
+    "image": ""
+  },
+  "projects": [
+    {
+      "name": "FWHM-Calculator",
+      "description": "Calculate FWHM to the nearest pixel from a TSV list of focal spot intensity values.",
+      "url": "https://github.com/ChowdhuryGroup/FWHM-Calculator",
+      "language": "Python",
+      "stars": 1,
+      "image": ""
+    },
+    {
+      "name": "BayesianCutting",
+      "description": "Optimization of laser glass cutting parameters using Bayesian optimization.",
+      "url": "https://github.com/ChowdhuryGroup/BayesianCutting",
+      "language": "Python",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "DScan",
+      "description": "Dispersion-scan (D-scan) tool used to characterize ultrafast laser pulses.",
+      "url": "https://github.com/ChowdhuryGroup/DScan",
+      "language": "MATLAB",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "MSquare-Fitter",
+      "description": "Fits M² (beam quality factor) from a TSV list of beam widths measured at varying positions.",
+      "url": "https://github.com/ChowdhuryGroup/MSquare-Fitter",
+      "language": "Python",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "THz_Analyzer",
+      "description": "Code to analyze THz time-domain signals and extract spectral information.",
+      "url": "https://github.com/ChowdhuryGroup/THz_Analyzer",
+      "language": "Python",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "SingleShotTimelapse",
+      "description": "Resources to analyze pump-probe images that encode multiple delay times in a single shot.",
+      "url": "https://github.com/ChowdhuryGroup/SingleShotTimelapse",
+      "language": "Python",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "ChowdhuryLabDevices",
+      "description": "Collection of Python scripts that simplify interaction with common lab instruments and devices.",
+      "url": "https://github.com/ChowdhuryGroup/ChowdhuryLabDevices",
+      "language": "Python",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "zscan",
+      "description": "Automates Z-scan measurements of nonlinear optical properties using a motorized stage and oscilloscope.",
+      "url": "https://github.com/ChowdhuryGroup/zscan",
+      "language": "Python",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "TemporalShapeFromSpectrum",
+      "description": "Calculates the temporal pulse E-field and intensity shape from a measured spectrum and complex phase.",
+      "url": "https://github.com/ChowdhuryGroup/TemporalShapeFromSpectrum",
+      "language": "Mathematica",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "mandorla",
+      "description": "Lab utility scripts for common measurement and data-processing tasks.",
+      "url": "https://github.com/ChowdhuryGroup/mandorla",
+      "language": "Python",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "dispersion-scan",
+      "description": "MATLAB scripts for dispersion-scan (D-scan) pulse characterization data analysis.",
+      "url": "https://github.com/ChowdhuryGroup/dispersion-scan",
+      "language": "MATLAB",
+      "stars": 0,
+      "image": ""
+    },
+    {
+      "name": "mirror-motion",
+      "description": "Model beam motion and angle as a function of mirror orientation for alignment planning.",
+      "url": "https://github.com/ChowdhuryGroup/mirror-motion",
+      "language": "Python",
+      "stars": 0,
+      "image": ""
+    }
+  ]
+}
